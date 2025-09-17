@@ -1,0 +1,25 @@
+{
+  "name": "track-lib",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kira2084/track-lib.git"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "vivek s",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kira2084/track-lib/issues"
+  },
+  "homepage": "https://github.com/kira2084/track-lib#readme",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.12.2"
+  }
+}
