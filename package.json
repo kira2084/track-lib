@@ -2,8 +2,8 @@
   "name": "track-lib",
   "version": "1.0.0",
   "main": "index.js",
-  "module": "index.js",     // for ESM
-  "type": "module",         // optional: makes default ESM
+  "module": "index.js",     
+  "type": "module",         
   "exports": {
     "require": "./index.js",
     "import": "./index.js"
