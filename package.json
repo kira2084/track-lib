@@ -7,7 +7,7 @@
   "exports": {
     "require": "./index.js",
     "import": "./index.js"
-  }
+  },
   "scripts": {
     "test": "npm run test"
   },
