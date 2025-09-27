@@ -108,7 +108,7 @@ function trackMiddleware({ trackingUrl = "http://localhost:3000", apiKey }) {
   // --- Middleware function ---
   return async (req, res, next) => {
     if (!global.activeRequests) global.activeRequests = [];
-
+    let finalized = false;
     const start = Date.now();
     const requestEvent = {
       apiKey,
@@ -203,7 +203,7 @@ function trackMiddleware({ trackingUrl = "http://localhost:3000", apiKey }) {
       // --- Patch res.send / res.json for normal flow ---
       const originalSend = res.send;
       const originalJson = res.json;
-
+      const originalEnd = res.end;
       const finalizeResponse = async (body) => {
         if (finalized) return; // prevent double logging
         finalized = true;
@@ -231,7 +231,10 @@ function trackMiddleware({ trackingUrl = "http://localhost:3000", apiKey }) {
         finalizeResponse(body).catch(() => {});
         return originalJson.call(this, body);
       };
-
+      res.end = function (chunk, encoding) {
+        finalizeResponse(chunk).catch(() => {});
+        return originalEnd.call(this, chunk, encoding);
+      };
       next();
     } catch (err) {
       console.error("Tracking error:", err.message);
