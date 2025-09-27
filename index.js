@@ -205,6 +205,8 @@ function trackMiddleware({ trackingUrl = "http://localhost:3000", apiKey }) {
       const originalJson = res.json;
 
       const finalizeResponse = async (body) => {
+        if (finalized) return; // prevent double logging
+        finalized = true;
         requestEvent.response = body;
         requestEvent.status = res.statusCode;
         requestEvent.durationMs = Date.now() - start;
