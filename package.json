@@ -1,7 +1,13 @@
 {
-  "name": "track-lib",
+  "name": "track-lib-api",
   "version": "1.0.0",
   "main": "index.js",
+  "module": "index.js",
+  "type": "module",
+  "exports": {
+    "require": "./index.js",
+    "import": "./index.js"
+  },
   "scripts": {
     "test": "npm run test"
   },

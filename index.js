@@ -105,4 +105,4 @@ function trackMiddleware({ trackingUrl, apiKey, sendInterval = 2000 }) {
   };
 }
 
-module.exports = { trackMiddleware };
+export { trackMiddleware };
